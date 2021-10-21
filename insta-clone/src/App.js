@@ -1,28 +1,36 @@
-import logo from './logo.svg';
+import React, { useState , useEffect } from 'react';
 import './App.css';
 import { Post } from './components/index';
+import { db } from './firebase';
 
 function App() {
+  const [posts, setPosts] = useState([]);
+
+  useEffect(() => {
+    db.collection('posts').onSnapshot(snapshot => {
+      setPosts(snapshot.docs.map(doc => doc.data()));
+    })
+  }, [posts])
+
   return (
     <div className="app">
-    <div className="app__header">
-      <img 
-      className="app__headerImage"
-      src="https://seeklogo.com/images/I/instagram-logo-468E0CC266-seeklogo.com.png" />
-    </div>
-    <Post 
-    username="ediselimi"
-    imageUrl="https://freefrontend.com/assets/img/css-logos/react-logo-pure-css.png" 
-    caption="Wow, il corso di React è davvero interessante."
-    />
-       <Post 
-    username="robertobaggio"
-    imageUrl="https://i1.wp.com/blog.logrocket.com/wp-content/uploads/2020/06/React-Native.png?fit=730%2C412" 
-    caption="Wow, il corso di React è davvero interessante."
-    />
-    {/* Header */}
+      <div className="app__header">
+        <img
+          className="app__headerImage"
+          src="https://seeklogo.com/images/I/instagram-logo-468E0CC266-seeklogo.com.png" />
+      </div>
+
+      { posts.map(post => (
+        <Post
+          username={post.username}
+          imageUrl={post.imageUrl}
+          caption={post.caption}
+        />
+      )) }
+
+      {/* Header */}
       {/* Posts */}
-        {/* Posts */}
+      {/* Posts */}
     </div>
   );
 }
