@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
-import { Post, LoginModal } from './components/index';
+import { Post, ModalComponent } from './components/index';
 import { db } from './db/firebase';
 
 function App() {
@@ -17,7 +17,7 @@ function App() {
 
   return (
     <div className="app">
-      <LoginModal />
+      <ModalComponent  />
       <div className="app__header">
         <img
           className="app__headerImage"
