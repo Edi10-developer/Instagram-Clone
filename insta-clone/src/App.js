@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
-import { Post, ModalComponent } from './components/index';
-import { db } from './db/firebase';
+import { Post, ModalComponent, ImageUpload } from './components/index';
+import { db, auth } from './db/firebase';
 
 function App() {
   const [posts, setPosts] = useState([]);
@@ -13,11 +13,30 @@ function App() {
         post: doc.data()
       })));
     })
-  }, [])
+  }, []);
+
+  // Set user
+  const [user, setUser] = useState(null)
+  useEffect(() => {
+    auth.onAuthStateChanged((authUser) => {
+      if (authUser) {
+        setUser(authUser);
+      } else {
+        setUser(null);
+      }
+    })
+  }, [user])
 
   return (
     <div className="app">
-      <ModalComponent  />
+      {user?.displayName ? (
+        <ImageUpload username={user.displayName} />
+      ) : (
+        <h3>Sorry you need to login to upload</h3>
+      )}
+
+
+      <ModalComponent />
       <div className="app__header">
         <img
           className="app__headerImage"
@@ -25,14 +44,14 @@ function App() {
           alt="Header image" />
       </div>
 
-      { posts.map(({ id, post }) => (
+      {posts.map(({ id, post }) => (
         <Post
           key={id}
           username={post.username}
           imageUrl={post.imageUrl}
           caption={post.caption}
         />
-      )) }
+      ))}
 
       {/* Header */}
       {/* Posts */}
