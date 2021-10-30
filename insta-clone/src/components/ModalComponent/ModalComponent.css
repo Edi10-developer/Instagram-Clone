@@ -1,0 +1,9 @@
+.modal__signup {
+    display: 'flex';
+    flex-direction: 'column',
+}
+
+.modal__image{
+    margin: 0 auto;
+    width: 9rem;
+}
