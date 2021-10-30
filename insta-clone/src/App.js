@@ -37,6 +37,7 @@ function App() {
           alt="Header image" />
         <ModalComponent />
       </div>
+
       <div className="app__posts">
         <div className="app__postsLeft">
           {posts.map(({ id, post }) => (
@@ -52,7 +53,7 @@ function App() {
         </div>
         <div className="app__postsRight">
           <InstagramEmbed
-            url='https://www.instagram.com/p/CTBqC1Yt0X-/'
+            url='https://www.instagram.com/p/CVd-o-vPf-y/?utm_source=ig_embed&amp;utm_campaign=loading'
             clientAccessToken='123|456'
             maxWidth={320}
             hideCaption={false}
@@ -68,13 +69,10 @@ function App() {
       </div>
 
       <div className="app__imageUpload">
-        {user?.displayName ? (
+        {user?.displayName && (
           <ImageUpload username={user.displayName} />
-        ) : (
-          <h3>Sorry you need to login to upload</h3>
         )}
       </div>
-
     </div>
   );
 }

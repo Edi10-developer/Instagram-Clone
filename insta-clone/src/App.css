@@ -9,6 +9,9 @@
 }
 
 .app__header{
+  position: sticky;
+  top: 0;
+  z-index: 1;
   display: flex;
   justify-content: space-between;
   background-color: white;
@@ -28,12 +31,8 @@
   padding: 20px;
 } 
 
-.app__postsLeft {
- 
-}
-
 .app__postsRight {
- margin-left: 20px;;
+ margin-left: 20px;
 }
 
 .app__imageUpload {
