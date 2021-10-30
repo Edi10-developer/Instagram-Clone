@@ -2,13 +2,15 @@
 
 ## Live Demo
 
-[Live Site](https://instagram-clone-e7fd7.web.app/)# Getting Started with Create React App
+[Live Site](https://instagram-clone-e7fd7.web.app/)
 
 ## View:
 
 ![Image](./public/Screenshot.png)
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
+# Getting Started with Create React App
 
 ## Available Scripts
 
